@@ -80,6 +80,37 @@
   drawLinks();
   var rz; window.addEventListener('resize', function () { clearTimeout(rz); rz = setTimeout(drawLinks, 150); });
 
+  /* ---------------- hero teaser video ---------------- */
+  (function () {
+    var v = document.getElementById('hero-video'); if (!v) return;
+    var frame = v.parentNode, playBtn = document.getElementById('hv-play'), soundBtn = document.getElementById('hv-sound');
+    function sync() {
+      frame.classList.toggle('hv-paused', v.paused);
+      playBtn.setAttribute('aria-label', v.paused ? 'Play video' : 'Pause video');
+      soundBtn.setAttribute('aria-pressed', v.muted ? 'false' : 'true');
+      soundBtn.setAttribute('aria-label', v.muted ? 'Turn sound on' : 'Turn sound off');
+    }
+    function toggle() { if (v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } else v.pause(); }
+    playBtn.addEventListener('click', toggle);
+    v.addEventListener('click', toggle);
+    soundBtn.addEventListener('click', function () {
+      v.muted = !v.muted;
+      if (!v.muted && v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+      sync();
+    });
+    ['play', 'pause', 'volumechange'].forEach(function (e) { v.addEventListener(e, sync); });
+    if (reduceMotion) v.pause();
+    // pause when scrolled away (saves battery), resume when back unless the visitor paused it
+    var userPaused = false;
+    playBtn.addEventListener('click', function () { userPaused = v.paused; });
+    v.addEventListener('click', function () { userPaused = v.paused; });
+    new IntersectionObserver(function (en) {
+      if (en[0].isIntersecting) { if (!userPaused && !reduceMotion && v.paused) { var p = v.play(); if (p && p.catch) p.catch(function () {}); } }
+      else if (!v.paused) v.pause();
+    }, { threshold: 0.2 }).observe(v);
+    sync();
+  })();
+
   /* ---------------- tooltip ---------------- */
   var tip = document.getElementById('tooltip');
   function showTip(html, ev) {

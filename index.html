@@ -20,7 +20,7 @@
   <div class="wrap nav-inner">
     <a class="nav-brand" href="#top" aria-label="BiCAT home"><span class="bi">Bi</span><span class="cat">CAT</span></a>
     <div class="nav-links">
-      <a href="#idea">Idea</a>
+      <a href="#insight">Insight</a>
       <a href="#method">Method</a>
       <a href="#compare">Real World</a>
       <a href="#simulation">Simulation</a>
@@ -166,34 +166,30 @@
   </div>
 </header>
 
+<!-- ============================== TEASER FILM (black band) ============================== -->
+<section class="film" aria-label="BiCAT teaser video">
+  <div class="wrap">
+    <figure class="hero-video">
+      <div class="hv-frame">
+        <video id="hero-video" autoplay muted loop playsinline preload="auto" poster="./static/videos/bicat_teaser.jpg" src="./static/videos/bicat_teaser.mp4" aria-label="BiCAT teaser video: autonomous bimanual rollouts on YAM, SO-101 and Unitree G1, and how BiCAT gives each arm its own token stream"></video>
+        <div class="hv-controls">
+          <button type="button" class="hv-btn" id="hv-play" aria-label="Pause video">
+            <svg class="i-pause" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="6" y="5" width="4" height="14" rx="1"/><rect x="14" y="5" width="4" height="14" rx="1"/></svg>
+            <svg class="i-play" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M8 5.5v13a1 1 0 0 0 1.5.86l10.5-6.5a1 1 0 0 0 0-1.72L9.5 4.64A1 1 0 0 0 8 5.5z"/></svg>
+          </button>
+          <button type="button" class="hv-btn" id="hv-sound" aria-label="Turn sound on" aria-pressed="false">
+            <svg class="i-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="m22 9-6 6M16 9l6 6"/></svg>
+            <svg class="i-sound" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M11 5 6 9H3v6h3l5 4z" fill="currentColor"/><path d="M15.5 8.5a5 5 0 0 1 0 7M18.5 5.5a9 9 0 0 1 0 13"/></svg>
+          </button>
+        </div>
+      </div>
+    </figure>
+  </div>
+</section>
+
 <!-- ============================== REEL + STATS (dark) ============================== -->
 <section class="reel-section" aria-label="BiCAT rollouts and key results">
   <div class="wrap">
-    <div class="center reveal">
-      <p class="eyebrow">Real robots, one tokenizer design</p>
-      <h2 class="headline">Three embodiments.<br><span class="muted">Two arms that move as a team.</span></h2>
-    </div>
-    <div class="reel reveal">
-      <figure>
-        <div class="media land">
-          <span class="chip"><b>SO-101</b> · Block</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/so101_block_bicat.mp4" poster="./static/videos/posters/so101_block_bicat.jpg" aria-label="BiCAT on Bimanual SO-101: put the block into the box, then hand the box over"></video>
-        </div>
-      </figure>
-      <figure>
-        <div class="media port">
-          <span class="chip"><b>G1</b> · Bowl</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/g1_plate_bicat.mp4" poster="./static/videos/posters/g1_plate_bicat.jpg" aria-label="BiCAT on Unitree G1: push the plate to the center, then place the bowl on it"></video>
-        </div>
-      </figure>
-      <figure>
-        <div class="media land">
-          <span class="chip"><b>YAM</b> · Bottle</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/yam_bottle_bicat.mp4" poster="./static/videos/posters/yam_bottle_bicat.jpg" aria-label="BiCAT on Bimanual YAM: put all bottles in the dustbin"></video>
-        </div>
-      </figure>
-    </div>
-    <p class="reel-caption">Autonomous BiCAT policy rollouts, played at 2× speed.</p>
 
     <div class="stats reveal" role="list">
       <div class="stat" role="listitem">
@@ -230,11 +226,11 @@
   </div>
 </section>
 
-<!-- ============================== IDEA ============================== -->
-<section class="section" id="idea" aria-labelledby="idea-h">
+<!-- ============================== INSIGHT ============================== -->
+<section class="section" id="insight" aria-labelledby="idea-h">
   <div class="wrap">
     <div class="section-head center reveal">
-      <p class="eyebrow">The idea</p>
+      <p class="eyebrow">Insight</p>
       <h2 class="headline" id="idea-h">Keep the arms apart.<br><span class="muted">Let them talk.</span></h2>
       <p class="lede">Joint tokenizers entangle both arms inside every token. Per-arm tokenizers keep identity but lose the partner. BiCAT keeps <strong>arm-indexed token streams</strong> and computes them <strong>from both arms</strong>.</p>
     </div>
