@@ -9,8 +9,7 @@ Zhongyi Luo,
 
 National University of Singapore
 
-<!-- TODO: replace "#" with the real Paper and Project Page links. -->
-[Paper](#) · [Project Page](https://Evan-XLiu.github.io/BiCAT/) · [BibTeX](#citation)
+[Paper](https://magiclab-nus.github.io/BiCAT/BiCAT.pdf) · [Project Page](https://magiclab-nus.github.io/BiCAT/) · [BibTeX](#citation)
 
 <!-- TODO: add a teaser figure, e.g. assets/teaser.png -->
 <!-- <img src="assets/teaser.png" width="90%" alt="BiCAT overview"> -->
