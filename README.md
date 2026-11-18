@@ -23,26 +23,6 @@ National University of Singapore
   <img src="assets/method.png" alt="BiCAT method overview" width="100%">
 </p>
 
-<p align="center"><em><b>Overview of BiCAT.</b> Top: mirror canonicalization flips the signed joints of the right arm and applies shared normalization; a shared encoder with causal cross-attention gives each arm its partner's context before FSQ, and a joint decoder reconstructs the canonical chunk. Bottom: a VLM predicts the left-arm tokens, then the right-arm tokens; the frozen decoder returns actions, executed on Bimanual SO-101, Unitree G1, and Bimanual YAM. Teal: left arm; orange: right arm.</em></p>
-
-BiCAT is an action tokenizer for bimanual vision-language-action (VLA)
-policies:
-
-- **Shared arm encoder.** The right arm is mapped into the left arm's joint
-  convention, and both arms share one normalization range. A shared causal
-  temporal encoder compresses each arm's 32-step action chunk into 8 latent
-  steps.
-- **Symmetric cross-arm attention.** The two arms exchange information through
-  shared-parameter causal cross-attention before quantization.
-- **Per-arm tokens.** Each arm is quantized with FSQ into 8 tokens (codebook
-  size 1920), serialized as `[left_0..7, right_0..7]`.
-- **Joint decoding.** A timestep-paired decoder reconstructs both arms jointly
-  from the aligned left/right latents.
-
-The BiCAT tokens are predicted by an autoregressive VLA policy (BAR) built on
-PaliGemma2 or Molmo2-ER. The policy predicts the left-arm token block first,
-then the right-arm block conditioned on it.
-
 ## Contents
 
 - [Installation](#installation)
