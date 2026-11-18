@@ -111,6 +111,20 @@
     sync();
   })();
 
+  /* ---------------- hero kittens: rest on top of "B" and "T" ---------------- */
+  function placeKits() {
+    var stage = document.getElementById('title-stage'), h1 = document.getElementById('hero-title');
+    if (!stage || !h1 || !h1.firstChild) return;
+    var txt = h1.firstChild, sb = stage.getBoundingClientRect();
+    function box(i) { var r = document.createRange(); r.setStart(txt, i); r.setEnd(txt, i + 1); return r.getBoundingClientRect(); }
+    var B = box(0), T = box(4), l = stage.querySelector('.kit-l'), r = stage.querySelector('.kit-r');
+    if (l) l.style.left = (B.left - sb.left + B.width * 0.47 - l.offsetWidth * 0.5) + 'px';
+    if (r) { r.style.right = 'auto'; r.style.left = (T.left - sb.left + T.width * 0.5 - r.offsetWidth * 0.5) + 'px'; }
+  }
+  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeKits); else placeKits();
+  window.addEventListener('load', placeKits);
+  window.addEventListener('resize', placeKits);
+
   /* ---------------- tooltip ---------------- */
   var tip = document.getElementById('tooltip');
   function showTip(html, ev) {
@@ -200,7 +214,9 @@
         '<div class="media">' +
           '<span class="chip">' + METHODS[m] + '</span>' +
           '<video muted playsinline preload="metadata" poster="' + V + 'posters/' + file + '.jpg" src="' + V + 'rollouts/' + file + '.mp4" aria-label="' + METHODS[m].replace(/<[^>]+>/g, '') + ' rollout, ' + t.robot + ' ' + t.name + ' task"></video>' +
-          '<span class="done-badge">Clip ended</span>' +
+          (m === 'bicat'
+            ? '<span class="done-badge success"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg>Success</span>'
+            : '<span class="done-badge failed"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6.5 6.5l11 11M17.5 6.5l-11 11"/></svg>Failed</span>') +
           '<div class="vprog"><i></i></div>' +
         '</div>' +
         '<figcaption class="vlabel"><span class="m">' + METHODS[m] + '</span><span class="s">' + t.sr[m] + '/25 success</span></figcaption>';
@@ -461,20 +477,4 @@
     if (navigator.clipboard) navigator.clipboard.writeText(text).then(done, function () {});
   });
 
-  /* ---------------- hero cats: sit on top of "B" and "T" ---------------- */
-  function placeCats() {
-    var stage = document.getElementById('title-stage'), h1 = document.getElementById('hero-title');
-    if (!stage || !h1 || !h1.firstChild) return;
-    var txt = h1.firstChild, sb = stage.getBoundingClientRect();
-    function box(i) { var r = document.createRange(); r.setStart(txt, i); r.setEnd(txt, i + 1); return r.getBoundingClientRect(); }
-    var B = box(0), T = box(4);
-    var l = stage.querySelector('.kitty-l'), rC = stage.querySelector('.kitty-r');
-    // left cat over the flat top of "B"; right cat centred on the bar of "T"
-    l.style.left = (B.left - sb.left + B.width * 0.04) + 'px';
-    rC.style.right = 'auto';
-    rC.style.left = (T.left - sb.left + T.width * 0.5 - rC.offsetWidth * 0.5) + 'px';
-  }
-  if (document.fonts && document.fonts.ready) document.fonts.ready.then(placeCats); else placeCats();
-  window.addEventListener('load', placeCats);
-  window.addEventListener('resize', placeCats);
 })();
