@@ -222,4 +222,5 @@ This codebase is built on [Praxis](https://github.com/Chaoqi-LIU/praxis-vla).
 
 ## License
 
-Released under the MIT License. See [LICENSE](LICENSE).
+Released under the Apache-2.0 license. See [LICENSE](LICENSE) and
+[NOTICE](NOTICE).
