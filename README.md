@@ -17,15 +17,6 @@ National University of Singapore
 
 </div>
 
-## News
-
-- **[TODO: YYYY-MM-DD]** Code released.
-- **[TODO: YYYY-MM-DD]** Paper available on arXiv.
-
-## Abstract
-
-TODO: paste the paper abstract here.
-
 ## Overview
 
 <p align="center">
