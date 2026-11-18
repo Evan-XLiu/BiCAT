@@ -22,7 +22,7 @@
     <div class="nav-links">
       <a href="#idea">Idea</a>
       <a href="#method">Method</a>
-      <a href="#real-world">Real World</a>
+      <a href="#compare">Real World</a>
       <a href="#simulation">Simulation</a>
       <a href="#bibtex">BibTeX</a>
     </div>
@@ -231,7 +231,7 @@
 </section>
 
 <!-- ============================== IDEA ============================== -->
-<section class="section soft" id="idea" aria-labelledby="idea-h">
+<section class="section" id="idea" aria-labelledby="idea-h">
   <div class="wrap">
     <div class="section-head center reveal">
       <p class="eyebrow">The idea</p>
@@ -287,7 +287,7 @@
 </section>
 
 <!-- ============================== METHOD ============================== -->
-<section class="section soft" id="method" aria-labelledby="method-h" style="padding-top:0">
+<section class="section" id="method" aria-labelledby="method-h" style="padding-top:0">
   <div class="wrap">
     <div class="section-head center reveal">
       <p class="eyebrow">Method</p>
@@ -319,55 +319,12 @@
 </section>
 
 <!-- ============================== REAL WORLD ============================== -->
-<section class="section" id="real-world" aria-labelledby="rw-h">
+<section class="section" id="compare" aria-labelledby="cmp-h">
   <div class="wrap">
     <div class="section-head center reveal">
       <p class="eyebrow">Real-world deployment</p>
-      <h2 class="headline" id="rw-h">Six tasks. Three robots.<br><span class="muted">25 trials each.</span></h2>
-      <p class="lede">Bimanual SO-101, Unitree G1 and Bimanual YAM. A trial counts only if the robot completes <strong>every stage</strong> of the task; initial placements are identical across methods.</p>
-    </div>
-
-    <div class="bento reveal" aria-label="BiCAT rollouts on all six real-world tasks">
-      <figure class="b-wide">
-        <div class="media r1"><span class="chip"><b>SO-101</b> · Block</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/so101_block_bicat.mp4" poster="./static/videos/posters/so101_block_bicat.jpg" aria-label="BiCAT, SO-101 Block task"></video></div>
-        <figcaption><b>Block.</b> Put the block into the box, then hand the box over. <b>25/25</b></figcaption>
-      </figure>
-      <figure class="b-tall">
-        <div class="media r1 port-crop"><span class="chip"><b>G1</b> · Bottle</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/g1_bottle_bicat.mp4" poster="./static/videos/posters/g1_bottle_bicat.jpg" aria-label="BiCAT, Unitree G1 Bottle task"></video></div>
-        <figcaption><b>Bottle.</b> Move the bottle to the left. <b>24/25</b></figcaption>
-      </figure>
-      <figure class="b-tall">
-        <div class="media r1 port-crop"><span class="chip"><b>G1</b> · Bowl</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/g1_plate_bicat.mp4" poster="./static/videos/posters/g1_plate_bicat.jpg" aria-label="BiCAT, Unitree G1 Bowl task"></video></div>
-        <figcaption><b>Bowl.</b> Push the plate to the center, then place the bowl on it. <b>21/25</b></figcaption>
-      </figure>
-      <figure class="b-third">
-        <div class="media r2"><span class="chip"><b>YAM</b> · Pen</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/yam_pen_bicat.mp4" poster="./static/videos/posters/yam_pen_bicat.jpg" aria-label="BiCAT, YAM Pen task"></video></div>
-        <figcaption><b>Pen.</b> Grasp the marker and its cap, then close the marker. <b>8/25</b></figcaption>
-      </figure>
-      <figure class="b-third">
-        <div class="media r2"><span class="chip"><b>YAM</b> · Box</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/yam_box_bicat.mp4" poster="./static/videos/posters/yam_box_bicat.jpg" aria-label="BiCAT, YAM Box task"></video></div>
-        <figcaption><b>Box.</b> Put all the metal parts in the box, then move the box forward. <b>14/25</b></figcaption>
-      </figure>
-      <figure class="b-third">
-        <div class="media r2"><span class="chip"><b>YAM</b> · Bottle</span><span class="speed-badge">2×</span>
-          <video class="auto" muted playsinline loop preload="none" data-src="./static/videos/rollouts/yam_bottle_bicat.mp4" poster="./static/videos/posters/yam_bottle_bicat.jpg" aria-label="BiCAT, YAM Bottle task"></video></div>
-        <figcaption><b>Bottle.</b> Put all bottles in the dustbin. <b>21/25</b></figcaption>
-      </figure>
-    </div>
-  </div>
-</section>
-
-<section class="section dark" id="compare" aria-labelledby="cmp-h">
-  <div class="wrap">
-    <div class="section-head center reveal">
-      <p class="eyebrow">Side by side</p>
       <h2 class="headline" id="cmp-h">Same robot. Same scene.<br><span class="muted">Only the tokenizer changes.</span></h2>
-      <p class="lede">All three policies share the data, Molmo2-ER backbone, observations and training steps. They differ only in the action tokenizer and its prediction schedule.</p>
+      <p class="lede">Six tasks on SO-101, Unitree G1 and YAM, 25 trials each. All three policies share the data, backbone and training; <strong>only the action tokenizer differs</strong>.</p>
     </div>
 
     <div class="seg-wrap reveal">
@@ -471,7 +428,7 @@
 </section>
 
 <!-- ============================== ANALYSIS ============================== -->
-<section class="section soft" id="analysis" aria-labelledby="an-h">
+<section class="section" id="analysis" aria-labelledby="an-h">
   <div class="wrap">
     <div class="section-head center reveal">
       <p class="eyebrow">Analysis</p>

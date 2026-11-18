@@ -461,3 +461,17 @@ table.data td.mean { font-weight: 700; }
   .kitty .breath, .kitty .tail, .kitty .head, .kitty .ear-r, .kitty .eyes { animation: none !important; }
   .kitty .zz { display: none; }
 }
+
+/* ================= all-white theme ================= */
+.section.soft, .section.dark { background: #fff; color: var(--ink); }
+.hero { background: #fff; }
+.footer { background: #fff; }
+.idea-card, .figure-card, .step, .cmp, .panel, .chart-card, .note-card {
+  background: #fff; border: 1px solid #e8e8ed; box-shadow: 0 1px 2px rgba(0,0,0,.03), 0 14px 36px rgba(0,0,0,.05);
+}
+.idea-card.ours { border-color: transparent; box-shadow: 0 0 0 2px var(--teal-2), 0 20px 50px rgba(31,102,118,.12); }
+.media { background: #f5f5f7; }
+.vcard .media video { background: #f5f5f7; }
+.bib { background: #f5f5f7; color: var(--ink); border: 1px solid #e8e8ed; }
+.copy-btn { background: #fff; color: var(--ink); box-shadow: inset 0 0 0 1px #d2d2d7; }
+.copy-btn:hover { background: #f0f0f3; }

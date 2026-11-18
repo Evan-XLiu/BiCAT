@@ -16,7 +16,27 @@
   function loadVideo(v) {
     if (!v.getAttribute('src') && v.dataset.src) { v.src = v.dataset.src; v.load(); }
   }
-  function setRate(v, r) { v.defaultPlaybackRate = r; v.playbackRate = r; }
+  /* Playback speed. Some browsers (notably Safari) reset playbackRate to 1 when a video
+     loads, starts playing or seeks, so the wanted rate is stored on the element and
+     re-applied on those events and by a light watchdog while videos play. */
+  function applyRate(v) {
+    var r = v._rate || 1;
+    if (Math.abs(v.defaultPlaybackRate - r) > 0.01) v.defaultPlaybackRate = r;
+    if (Math.abs(v.playbackRate - r) > 0.01) v.playbackRate = r;
+  }
+  function setRate(v, r) {
+    v._rate = r;
+    if (!v._rateHooked) {
+      v._rateHooked = true;
+      ['loadedmetadata', 'loadeddata', 'canplay', 'play', 'playing', 'seeked', 'ratechange'].forEach(function (ev) {
+        v.addEventListener(ev, function () { applyRate(v); });
+      });
+    }
+    applyRate(v);
+  }
+  setInterval(function () {
+    document.querySelectorAll('video').forEach(function (v) { if (v._rate && !v.paused) applyRate(v); });
+  }, 400);
   var autoIO = new IntersectionObserver(function (entries) {
     entries.forEach(function (e) {
       var v = e.target;
@@ -155,6 +175,7 @@
         '<figcaption class="vlabel"><span class="m">' + METHODS[m] + '</span><span class="s">' + t.sr[m] + '/25 success</span></figcaption>';
       grid.appendChild(f);
       var v = f.querySelector('video'), bar = f.querySelector('.vprog i');
+      setRate(v, rate);
       v.addEventListener('loadedmetadata', function () { setRate(v, rate); });
       v.addEventListener('timeupdate', function () { if (v.duration) bar.style.width = (v.currentTime / v.duration * 100) + '%'; });
       v.addEventListener('ended', function () { f.classList.add('ended'); updatePlayBtn(); });
