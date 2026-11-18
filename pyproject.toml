@@ -9,7 +9,7 @@ description = "BiCAT bimanual action tokenizer and autoregressive VLA policy tra
 readme = "README.md"
 requires-python = ">=3.10,<3.14"
 license = "Apache-2.0"
-license-files = ["LICENSE", "NOTICE"]
+license-files = ["LICENSE"]
 authors = [
     { name = "Chaoqi Liu" },
 ]
